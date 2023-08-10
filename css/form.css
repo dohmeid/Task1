@@ -33,14 +33,14 @@ body {
 
 /******************************************************************/
 /*form*/
-form {
+.event-form {
     box-sizing: border-box;
     padding: 4em 8em;
     overflow: auto;
     flex: 1;
 }
 
-.form-list {
+.event-form .form-list {
     list-style-type: none;
     font-family: Raleway;
     display: grid;
@@ -52,19 +52,19 @@ form {
     display: flex;
 }
 
-form label {
+.form-row label {
     font-size: 25px;
     width: 8em;
 }
 
-form input,
-textarea {
+.form-row input,
+.form-row textarea {
     padding-left: 20px;
     font-size: 15px;
     width: 500px;
 }
 
-form input {
+.form-row input {
     height: 3em;
 }
 
@@ -77,7 +77,7 @@ footer {
     padding: 0 0.5em;
 }
 
-.buttons {
+footer .buttons {
     display: grid;
     gap: 10px;
     grid-template-columns: repeat(2, 7em);
@@ -86,21 +86,21 @@ footer {
     padding-top: 0.5em;
 }
 
-footer input,
-button {
+footer .buttons input,
+footer .buttons button {
     height: 3em;
     width: 7em;
     font-family: Montserrat;
 }
 
-footer input {
+footer .buttons input {
     background-color: crimson;
     border-width: 0.5px;
     border-color: white;
     color: white;
 }
 
-footer button {
+footer .buttons button {
     background-color: white;
     border-width: 0.5px;
     border-color: crimson;
