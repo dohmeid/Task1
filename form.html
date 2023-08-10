@@ -3,21 +3,24 @@
 
 <head> <!--includes content that aren't shown to the page's viewers-->
     <meta charset="utf-8" /> <!-- to set the character set for the document-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- to ensure that the page renders at the width of viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- to ensure that the page renders at the width of viewport-->
     <!--for using google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;900&family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;900&family=Raleway&display=swap"
+        rel="stylesheet">
 
-    <link rel="stylesheet" href="style2.css">
-    <meta name="description" content="Task1 in the internship which includes an events page with search bar and results" />
-    <title>Task 1 - part2</title>
+    <link rel="stylesheet" href="css/form.css">
+    <meta name="description"
+        content="Task1 in the internship which includes an events page with search bar and results" />
+    <title>Task 1 - form page</title>
 </head>
 
 <body>
 
     <div class="main-container">
-    
+
         <div class="header-div">
             <h1>Create / Edit Event</h1>
         </div>
@@ -32,7 +35,7 @@
                 <li class="form-row">
                     <label for="description">Description:</label>
                     <textarea rows="8" id="description" placeholder=""></textarea><br>
-                </li>   
+                </li>
 
                 <li class="form-row">
                     <label for="date">Date:</label>
@@ -43,7 +46,7 @@
         </form>
 
         <footer>
-            <hr/>
+            <hr />
             <div class="buttons">
                 <button type="button" onclick="alert('cancelling the form')">Cancel</button>
                 <input type="submit" value="Save/Add">
