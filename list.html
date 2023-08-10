@@ -24,15 +24,15 @@
         <!--nav bar-->
         <header>
             <h1>Events</h1>
-            <button type="button" onclick="alert('adding a new picture')">+New</button>
+            <button class="new-button" type="button" onclick="alert('adding a new picture')">+New</button>
         </header>
 
         <!--search bar and sort list-->
         <div class="searchbar-sortlist-div">
             <input type="text" placeholder="Search" class="searchbar">
             <div class="options">
-                <label for="sort-options" id="sort-options-label">Sort by</label>
-                <select name="sort-options" id="sort-options">
+                <label for="sort-options" id="sort-options-label" class="sort-options-label">Sort by</label>
+                <select name="sort-options" id="sort-options" class="sort-options">
                     <option value="date">Date</option>
                     <option value="name">Name</option>
                 </select>
@@ -41,8 +41,8 @@
 
 
         <!--results section-->
-        <section class="results">
-            <div class="results-header">
+        <section class="results-section">
+            <div class="header">
                 <h2>Results</h2>
             </div>
 

@@ -39,7 +39,7 @@ header {
 }
 
 header h1,
-button {
+header .new-button {
     width: 100px;
     height: 40px;
 }
@@ -49,7 +49,7 @@ header h1 {
     font-weight: 200;
 }
 
-header button {
+header .new-button {
     background-color: white;
     font-family: Raleway;
     text-align: center;
@@ -68,7 +68,7 @@ header button {
     justify-content: space-between;
 }
 
-.searchbar {
+.searchbar-sortlist-div .searchbar {
     box-sizing: border-box;
     width: 300px;
     height: 30px;
@@ -78,7 +78,7 @@ header button {
     padding-left: 15px;
 }
 
-#sort-options-label {
+.searchbar-sortlist-div .options .sort-options-label {
     box-sizing: border-box;
     height: 30px;
     padding-right: 15px;
@@ -86,7 +86,7 @@ header button {
     font-family: Raleway;
 }
 
-#sort-options {
+.searchbar-sortlist-div .options .sort-options {
     box-sizing: border-box;
     width: 100px;
     height: 30px;
@@ -96,7 +96,7 @@ header button {
 
 /******************************************************************/
 /*FOR THE RESULTS SECTION*/
-section {
+.results-section {
     background-color: whitesmoke;
     border: 1px solid #747272;
     border-radius: 4px;
@@ -109,7 +109,7 @@ section {
     height: 100%;
 }
 
-.results-header {
+.results-section .header {
     box-sizing: border-box;
     background-color: #c0c0c0;
     height: 50px;
@@ -117,13 +117,13 @@ section {
     padding-left: 1.1em;
 }
 
-section h2 {
+.results-section .header h2 {
     font-family: Montserrat;
     font-weight: 400;
     font-size: 18px;
 }
 
-.content {
+.results-section .content {
     padding: 40px;
     display: grid;
     gap: 40px 20px;
@@ -134,7 +134,7 @@ section h2 {
     overflow: auto;
 }
 
-.card {
+.results-section .content .card {
     background-color: lightgrey;
 }
 
