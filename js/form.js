@@ -33,6 +33,7 @@ function cancelEvent() {
 }
 document.getElementById("event-name").addEventListener("keyup", validateForm);
 document.getElementById("event-date").addEventListener("change", validateForm);
+document.getElementById("event-description").addEventListener("keyup", validateForm);
 
 //*****************FUNCTIONS*****************/
 //Here, check if the page is to add a new event or edit an event and based on that load event listeners

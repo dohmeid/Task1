@@ -109,7 +109,7 @@ footer .buttons input {
     color: white;
 }
 
-footer .buttons input:hover {
+footer .buttons input:hover:not([disabled]) {
     border-color: lightgrey;
     font-weight: bold;
     border-width: 4px;
@@ -126,4 +126,10 @@ footer .buttons button {
 footer .buttons button:hover {
     font-weight: bold;
     border-width: 4px;
+}
+
+footer .buttons input:disabled {
+    background-color: grey;
+    opacity: 0.6;
+    cursor: not-allowed;
 }
