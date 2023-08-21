@@ -12,6 +12,7 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="css/list.css">
+
     <meta name="description"
         content="Task1 in the internship which includes an events page with search bar and results section" />
     <title>Task 1 - list page</title>
@@ -24,12 +25,12 @@
         <!--nav bar-->
         <header>
             <h1>Events</h1>
-            <button class="new-button" type="button" onclick="alert('adding a new picture')">+New</button>
+            <button class="new-button" type="button" id="new-event-btn">+New</button>
         </header>
 
         <!--search bar and sort list-->
         <div class="searchbar-sortlist-div">
-            <input type="text" placeholder="Search" class="searchbar">
+            <input type="text" placeholder="Search" class="searchbar" id="searchBar">
             <div class="options">
                 <label for="sort-options" id="sort-options-label" class="sort-options-label">Sort by</label>
                 <select name="sort-options" id="sort-options" class="sort-options">
@@ -46,30 +47,8 @@
                 <h2>Results</h2>
             </div>
 
-            <div class="content">
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
+            <div class="content" id="content">
+                <!--<div class="card"></div>-->
             </div>
 
         </section>
@@ -77,11 +56,12 @@
         <!--footer-->
         <footer>
             <hr />
-            <p>Count: 20</p>
+            <p id="count-label">Count: 0</p>
         </footer>
 
     </div>
 
+    <script type="module" src="js/list.js"></script>
 </body>
 
 </html>
