@@ -10,51 +10,53 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;900&family=Raleway&display=swap"
         rel="stylesheet">
-
     <link rel="stylesheet" href="css/form.css">
+
     <meta name="description"
         content="Task1 in the internship which includes an events page with search bar and results" />
     <title>Task 1 - form page</title>
 </head>
 
 <body>
-
     <div class="main-container">
 
         <div class="header-div">
-            <h1>Create / Edit Event</h1>
+            <h1 id="heading1">Create / Edit Event</h1>
         </div>
 
-        <form class="event-form">
-            <ul class="form-list">
-                <li class="form-row">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" value=""><br>
-                </li>
+        <form id="events-form" class="form-container" action="" method="">
+            <div class="event-form">
+                <ul class="form-list">
+                    <li class="form-row">
+                        <label for="event-name">Name:</label>
+                        <input type="text" id="event-name" name="name" value="" placeholder="Enter event name"
+                            minlength="3" required><br> <!-- pattern="[A-Za-z ]+" -->
+                    </li>
 
-                <li class="form-row">
-                    <label for="description">Description:</label>
-                    <textarea rows="8" id="description" placeholder=""></textarea><br>
-                </li>
+                    <li class="form-row">
+                        <label for="event-description">Description:</label>
+                        <textarea rows="8" id="event-description" placeholder="This field is optional"></textarea><br>
+                    </li>
 
-                <li class="form-row">
-                    <label for="date">Date:</label>
-                    <input type="datetime-local" id="date" name="date"><br>
-                </li>
-            </ul>
-
-        </form>
-
-        <footer>
-            <hr />
-            <div class="buttons">
-                <button type="button" onclick="alert('cancelling the form')">Cancel</button>
-                <input type="submit" value="Save/Add">
+                    <li class="form-row">
+                        <label for="event-date">Date:</label>
+                        <input type="datetime-local" id="event-date" name="date" placeholder="Enter event date"
+                            required><br>
+                    </li>
+                </ul>
             </div>
-        </footer>
 
+            <footer>
+                <hr />
+                <div class="buttons">
+                    <button type="button" id="cancel-form-btn">Cancel</button>
+                    <input type="submit" id="submit-form-btn" value="Save/Add">
+                </div>
+            </footer>
+        </form>
     </div>
 
+    <script type="module" src="js/form.js"></script>
 </body>
 
 </html>

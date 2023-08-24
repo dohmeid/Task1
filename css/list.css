@@ -57,6 +57,12 @@ header .new-button {
     font-size: 15px;
 }
 
+header .new-button:hover {
+    border: 2px solid crimson;
+    border-radius: 2px;
+    color: crimson;
+}
+
 /******************************************************************/
 /*FOR SEARCH BAR AND THE SORTING LIST*/
 .searchbar-sortlist-div {
@@ -135,7 +141,16 @@ header .new-button {
 }
 
 .results-section .content .card {
+    box-sizing: border-box;
     background-color: lightgrey;
+    padding-top: 5em;
+    text-align: center;
+}
+
+.results-section .content .card:hover {
+    border: 3px solid #171515;
+    border-radius: 2px;
+    opacity: 0.7;
 }
 
 
