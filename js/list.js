@@ -36,14 +36,16 @@ searchBar.onkeyup = () => {
         }
     }
     filteredArray = [...searchResultCards];
+    sortCards();
     clearEvents();
     displayCards();
-    sortCards();
 }
 
 //Sorting drop-down list functionality
 sortlist.onchange = () => { //it's better to use onClick instead of onChange
     sortCards();
+    clearEvents();
+    displayCards();
 }
 
 
@@ -129,8 +131,7 @@ function sortCards() {
             return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
         });
     }
-    clearEvents();
-    displayCards();
+
 }
 
 //This function deletes all the card events in the page
