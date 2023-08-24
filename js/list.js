@@ -42,7 +42,7 @@ searchBar.onkeyup = () => {
 
 
 //Sorting drop-down list functionality
-sortlist.onchange = () => {
+sortlist.onclick = () => { //it's better to use onClick instead of onChange
 
     var value = sortlist.value; //date, name
 
