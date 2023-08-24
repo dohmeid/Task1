@@ -43,7 +43,6 @@ function loadPage() {
             if (name == "") {   //To add a new event
                 document.getElementById("heading1").innerHTML = "Create Event";
                 document.getElementById("submit-form-btn").value = "Add";
-                isNew = true;  //means create event mode
             }
             else {   //To edit an event
                 document.getElementById("heading1").innerHTML = "Edit Event";
@@ -75,7 +74,7 @@ function submitForm(isNew, id) {
     eventName = eventName.charAt(0).toUpperCase() + eventName.substr(1).toLowerCase();//convert to title case
 
     var eventID = id;
-    if (isNew == true) { //create a new event mode
+    if (isNew) { //create a new event mode
         eventID = eventName + Math.floor((Math.random() * 9999) + 1); //create a new id for the new event
     }
     else { //edit event mode

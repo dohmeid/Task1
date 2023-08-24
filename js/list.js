@@ -29,37 +29,21 @@ searchBar.onkeyup = () => {
     let searchName = document.getElementById("searchBar").value.toUpperCase();
     //iterate through all cards and add only cards that match the search query to the searchResultCards array
     let searchResultCards = [];
-    for (let k = 0; k < originalArray.length; k++) {
-        let name1 = originalArray[k].name.toUpperCase();
+    for (let cardData of originalArray) {
+        let name1 = cardData.name.toUpperCase();
         if (name1.indexOf(searchName) > -1) { //check if searchName is a substring of card name
-            searchResultCards.push(originalArray[k]); //add to filteredArray
+            searchResultCards.push(cardData); //add to filteredArray
         }
     }
     filteredArray = [...searchResultCards];
     clearEvents();
     displayCards();
+    sortCards();
 }
 
-
 //Sorting drop-down list functionality
-sortlist.onclick = () => { //it's better to use onClick instead of onChange
-
-    var value = sortlist.value; //date, name
-
-    if (value == "date") { //sort by date
-        filteredArray.sort(function (a, b) {
-            return new Date(b.date) - new Date(a.date); //convert date strings to date objects and then subtract them
-        });
-    }
-    else if (value == "name") { //sort by name
-        filteredArray.sort(function (a, b) {
-            var textA = a.name.toUpperCase();
-            var textB = b.name.toUpperCase();
-            return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-        });
-    }
-    clearEvents();
-    displayCards();
+sortlist.onchange = () => { //it's better to use onClick instead of onChange
+    sortCards();
 }
 
 
@@ -82,10 +66,12 @@ function loadEvents() {
 
 //This function is used to display the data inside the filteredArray as cards on the screen
 function displayCards() {
-    for (let i = 0; i < filteredArray.length; i++) { //load the cards
-        var name = filteredArray[i].name;
-        var description = filteredArray[i].description;
-        var date = filteredArray[i].date;
+
+    for (let filteredCardData of filteredArray) {
+
+        var name = filteredCardData.name;
+        var description = filteredCardData.description;
+        var date = filteredCardData.date;
 
         var newDiv = document.createElement("div");
         var nameTextNode = document.createTextNode(name);
@@ -113,10 +99,10 @@ function displayCards() {
         newDiv.addEventListener('click', function () {
             set(ref(db, 'eventToEdit/'),
                 {
-                    id: filteredArray[i].id,
-                    name: filteredArray[i].name,
-                    description: filteredArray[i].description,
-                    date: filteredArray[i].date
+                    id: filteredCardData.id,
+                    name: filteredCardData.name,
+                    description: filteredCardData.description,
+                    date: filteredCardData.date
                 });
             window.location.href = 'form.html';
         });
@@ -125,6 +111,26 @@ function displayCards() {
     //load the count value and write it on the page
     totalRecord = filteredArray.length;
     document.getElementById("count-label").innerHTML = "Count: " + totalRecord;
+}
+
+//This function is used to sort the cards based on date or name
+function sortCards() {
+    var value = sortlist.value; //date, name
+
+    if (value == "date") { //sort by date
+        filteredArray.sort(function (a, b) {
+            return new Date(b.date) - new Date(a.date); //convert date strings to date objects and then subtract them
+        });
+    }
+    else if (value == "name") { //sort by name
+        filteredArray.sort(function (a, b) {
+            var textA = a.name.toUpperCase();
+            var textB = b.name.toUpperCase();
+            return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+        });
+    }
+    clearEvents();
+    displayCards();
 }
 
 //This function deletes all the card events in the page
