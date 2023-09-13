@@ -1,0 +1,50 @@
+.resultsSection {
+    background-color: whitesmoke;
+    border: 1px solid #747272;
+    border-radius: 4px;
+    margin: 0 10px;
+    overflow: auto;
+    flex: 1;
+    /*the internal flexbox*/
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.resultsSection .header {
+    box-sizing: border-box;
+    background-color: #c0c0c0;
+    height: 50px;
+    padding-top: 13px;
+    padding-left: 1.1em;
+}
+
+.resultsSection .header h2 {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.resultsSection .content {
+    padding: 40px;
+    display: grid;
+    gap: 40px 20px;
+    grid-template-columns: repeat(auto-fit, 250px);
+    grid-auto-rows: 200px;
+    justify-content: center;
+    flex: 1;
+    overflow: auto;
+}
+
+.resultsSection .content .card {
+    box-sizing: border-box;
+    background-color: lightgrey;
+    padding-top: 5em;
+    text-align: center;
+}
+
+.resultsSection .content .card:hover {
+    border: 3px solid #171515;
+    border-radius: 2px;
+    opacity: 0.7;
+}

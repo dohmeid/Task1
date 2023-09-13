@@ -1,0 +1,7 @@
+/******************************************************************/
+/*FOR THE MAIN-FLEX*/
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
