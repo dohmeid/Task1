@@ -1,6 +1,7 @@
-import classes from './Footer.module.css'
+import React from 'react';
+import classes from './FormFooter.module.css'
 
-function Footer(props) {
+function FormFooter(props) {
 
     return (
         <footer className={classes.footerDiv}>
@@ -14,4 +15,4 @@ function Footer(props) {
     );
 }
 
-export default Footer;
+export default FormFooter;

@@ -1,14 +1,15 @@
-import classes from './NavBar.module.css';
+import React from 'react';
+import classes from './ListHeader.module.css';
 
-function NavBar(props) {
+function ListHeader(props) {
 
     //JSX CODE---------------------------------------------------------------
     return (
-        <header>
-            <h1>Events</h1>
+        <header className={classes.header}>
+            <h1 className={classes.text}>Events</h1>
             <button className={classes.newButton} type="button" onClick={props.newButtonClickHandler}>+New</button>
         </header>
     );
 }
 
-export default NavBar;
+export default ListHeader;

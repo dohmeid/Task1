@@ -1,13 +1,12 @@
-import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
-import Form from './pages/FormPage/Form';
-import List from './pages/ListPage/List';
+import React from 'react';
+import FormPage from './pages/FormPage/FormPage';
+import ListPage from './pages/ListPage/ListPage';
 import './App.css';
 
 const router = createBrowserRouter([
-  { path: '/', element: <List /> },
-  { path: '/form', element: <Form /> },
+  { path: '/', element: <ListPage /> },
+  { path: '/form', element: <FormPage /> },
 ]);
 
 function App() {

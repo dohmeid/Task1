@@ -1,5 +1,5 @@
+import React, { useRef } from 'react';
 import classes from './ListOptions.module.css';
-import { useState, useRef, useEffect } from 'react';
 
 function ListOptions(props) {
 
@@ -7,45 +7,38 @@ function ListOptions(props) {
     const name = useRef();
     const sortOption = useRef();
 
-    /*
-      filteredDataArray={filteredDataArray}
-      setFilteredDataArray={setFilteredDataArray}
-    originalData
-    */
-
     //FUNCTIONS----------------------------------------------------------------
     //Search bar functionality: displays only events that match the search query
     function search() {
+        sortCards();
         let searchName = name.current.value;
-        console.log(searchName);
+        searchName = searchName.charAt(0).toUpperCase() + searchName.substr(1).toLowerCase();//convert to title case
 
         //iterate through all cards and add only cards that match the search query to the searchResultCards array
         let searchResultCards = [];
-        for (let cardData of props.originalData) {
-            let name1 = cardData.name;
-            if (name1.indexOf(searchName) > -1) { //check if searchName is a substring of card name
+        for (let cardData of props.originalDataArray) {
+            let name = cardData.name;
+            if (name.indexOf(searchName) > -1) { //check if searchName is a substring of card name
                 searchResultCards.push(cardData); //add to filteredArray
             }
         }
 
-        console.log(props.originalData.length);
-        console.log(searchResultCards.length);
         props.setFilteredDataArray(searchResultCards);
-        props.setTotalCards(searchResultCards.length)
+        props.setTotalCards(searchResultCards.length);
+        props.setChange(true);
     }
 
     //Sort cards functionality: sorts the cards based on the user's  (date or name)
     function sortCards() {
-
         let sortOptionValue = sortOption.current.value; //date, name
         let filteredArray = props.filteredDataArray;
 
-        if (sortOptionValue == "date") { //sort by date
+        if (sortOptionValue === "date") { //sort by date
             filteredArray.sort(function (a, b) {
                 return new Date(b.date) - new Date(a.date); //convert date strings to date objects and then subtract them
             });
         }
-        else if (sortOptionValue == "name") { //sort by name
+        else if (sortOptionValue === "name") { //sort by name
             filteredArray.sort(function (a, b) {
                 var textA = a.name.toUpperCase();
                 var textB = b.name.toUpperCase();
@@ -54,6 +47,8 @@ function ListOptions(props) {
         }
 
         props.setFilteredDataArray(filteredArray);
+        props.setTotalCards(filteredArray.length);
+        props.setChange(true);
     }
 
 
@@ -67,7 +62,8 @@ function ListOptions(props) {
 
             <div className={classes.options}>
                 <label htmlFor="sort-options" className={classes.sortOptionsLabel}>Sort by</label>
-                <select name="sort-options" className={classes.sortOptions} onChange={() => sortCards()} ref={sortOption}>
+                <select name="sort-options" className={classes.sortOptions} onChange={() => sortCards()}
+                    ref={sortOption} defaultValue="none">
                     <option value="none" disabled hidden>Select...</option>
                     <option value="date">Date</option>
                     <option value="name">Name</option>

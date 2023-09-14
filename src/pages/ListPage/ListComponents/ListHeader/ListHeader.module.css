@@ -1,4 +1,4 @@
-header {
+.header {
     box-sizing: border-box;
     background-color: #171515;
     color: white;
@@ -10,18 +10,19 @@ header {
 
 }
 
-header h1,
-header .newButton {
+.newButton {
     width: 100px;
     height: 40px;
 }
 
-header h1 {
+.text{
     font-family: Montserrat;
     font-weight: 200;
+    width: 100px;
+    height: 40px;
 }
 
-header .newButton {
+.newButton {
     background-color: white;
     font-family: Raleway;
     text-align: center;
@@ -29,7 +30,7 @@ header .newButton {
     font-size: 15px;
 }
 
-header .newButton:hover {
+.newButton:hover {
     border: 2px solid crimson;
     border-radius: 2px;
     color: crimson;

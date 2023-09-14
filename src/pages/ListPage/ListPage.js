@@ -1,28 +1,33 @@
-import { db, app, getDatabase, ref, set, get, child } from "../../services/firebase";
+import { db, app, getDatabase, ref, set, get, child } from "../../services/Firebase";
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import NavBar from '../../components/ListComponents/NavBar/NavBar';
-import Footer from '../../components/ListComponents/Footer/Footer';
-import Results from '../../components/ListComponents/Results/Results';
-import ListOptions from '../../components/ListComponents/SearchSortDiv/ListOptions';
-import classes from './List.module.css';
+import React, { useState, useEffect } from 'react';
+import ListHeader from './ListComponents/ListHeader/ListHeader';
+import ListOptions from './ListComponents/ListOptions/ListOptions';
+import ListBody from './ListComponents/ListBody/ListBody';
+import ListFooter from './ListComponents/ListFooter/ListFooter';
+import classes from './ListPage.module.css';
 
 
-function List() {
+function ListPage() {
 
-    const [totalCards, setTotalCards] = useState(0);
+    //STATES & HOOKS------------------------------------------------------------------
+    const [originalDataArray, setOriginalDataArray] = useState([]); //this array contains filtered group of data from the originalArray
+    const [filteredDataArray, setFilteredDataArray] = useState([]); //this array contains filtered group of data from the originalArray
+    const [totalCards, setTotalCards] = useState(0); //contains the total number of events' cards
+    const [cardsColorsArray, setCardsColorsArray] = useState([]);
+    const [change, setChange] = useState(false);
     const navigate = useNavigate();
 
-    const [filteredDataArray, setFilteredDataArray] = useState([]); //this array contains filtered group of data from the originalArray
-    const [originalData, setOriginalData] = useState([]); //this array contains filtered group of data from the originalArray
-    const [color, setColor] = useState([]);
-
-    var originalDataArray = []; //this array contains the original data from the firebase database
-    var colors = [];
+    useEffect(() => {
+        loadEvents(); //Initially load all the events from the database
+    }, []);
 
     useEffect(() => {
-        loadEvents(); //initially load the events from the database to the originalDataArray
-    }, [{ totalCards }]);
+        if (change === true) {
+            displayCards(); //load the events from the database to the originalDataArray
+            setChange(false);
+        }
+    });
 
 
     //FUNCTIONS-----------------------------------------------------------------
@@ -41,8 +46,12 @@ function List() {
         const dbRef = ref(getDatabase(app));
         get(child(dbRef, 'events/')).then((snapshot) => {
             if (snapshot.exists()) {
-                originalDataArray = snapshotToArray(snapshot); //CONVERT FIREBASE DATABASE SNAPSHOT/COLLECTION TO AN ARRAY                displayCards(); //intially display the cards as the order they appear in the database
-                displayCards();
+                let originalData = [];
+                originalData = snapshotToArray(snapshot); //CONVERT FIREBASE DATABASE SNAPSHOT/COLLECTION TO AN ARRAY                displayCards(); //intially display the cards as the order they appear in the database
+                setOriginalDataArray(originalData);
+                setFilteredDataArray(originalData);
+                setTotalCards(originalData.length);
+                setChange(true);
             } else {
                 console.log("No data available");
             }
@@ -53,30 +62,29 @@ function List() {
 
     //This function is used to display the data as cards on the screen
     function displayCards() {
-        setOriginalData(originalDataArray);
-        setFilteredDataArray(originalDataArray);
-        setTotalCards(originalDataArray.length);
-
+        let colorsArray = [];
         //set the colors array such that, Past date:red - Current date:blue - Future date:Purple  
         for (let i = 0; i < filteredDataArray.length; i++) {
             if (compareDates(filteredDataArray[i].date) === 1)
-                colors[i] = "#982176"; //purple
+                colorsArray[i] = "#982176"; //purple
             else if (compareDates(filteredDataArray[i].date) === 0)
-                colors[i] = "#1434A4"; //blue
+                colorsArray[i] = "#1434A4"; //blue
             else if (compareDates(filteredDataArray[i].date) === -1)
-                colors[i] = "#D22B2B"; //red
+                colorsArray[i] = "#D22B2B"; //red
         }
-        setColor(colors);
+        setCardsColorsArray(colorsArray);
     }
 
     //This function is used when clicking a div to edit it's event
     const divClickHandler = (event) => {
         let divData = event.currentTarget.textContent;
-        var myArray = divData.split(' ');
-        var name = myArray[0];
+        var myArray = divData.trim().split("  ");
+        var name = myArray[0].toUpperCase();
 
         for (let k = 0; k < filteredDataArray.length; k++) {
-            if (name === filteredDataArray[k].name) {
+            console.log(filteredDataArray[k].name);
+            if (name === filteredDataArray[k].name.toUpperCase()) {
+                console.log("good here" + filteredDataArray[k].name);
                 set(ref(db, 'eventToEdit/'),
                     {
                         id: filteredDataArray[k].id,
@@ -128,28 +136,26 @@ function List() {
 
     //JSX CODE---------------------------------------------------------------
     return (
-        <>
-            <div className={classes.mainContainer}>
-                <NavBar newButtonClickHandler={() => { newButtonClickHandler() }} />
+        <div className={classes.mainContainer}>
+            <ListHeader newButtonClickHandler={() => { newButtonClickHandler() }} />
 
-                <ListOptions
-                    filteredDataArray={filteredDataArray}
-                    setFilteredDataArray={setFilteredDataArray}
-                    originalData={originalData}
-                    setTotalCards={setTotalCards}
-                />
+            <ListOptions
+                filteredDataArray={filteredDataArray}
+                setFilteredDataArray={setFilteredDataArray}
+                originalDataArray={originalDataArray}
+                setTotalCards={setTotalCards}
+                setChange={setChange}
+            />
 
-                <Results totalCards={totalCards}
-                    color={color}
-                    divClickHandler={divClickHandler}
-                    filteredDataArray={filteredDataArray}
-                />
+            <ListBody totalCards={totalCards}
+                color={cardsColorsArray}
+                divClickHandler={divClickHandler}
+                filteredDataArray={filteredDataArray}
+            />
 
-                <Footer count={totalCards} />
-            </div>
-
-        </>
+            <ListFooter count={totalCards} />
+        </div>
     );
 }
 
-export default List;
+export default ListPage;

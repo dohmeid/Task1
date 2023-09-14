@@ -1,11 +1,11 @@
-import { db, ref, set, get, child } from "../../../services/firebase";
+import { db, ref, set, get, child } from "../../../../services/Firebase";
 import { useNavigate } from 'react-router-dom';
-import { useState, useRef, useEffect } from 'react';
-import Footer from "../Footer/Footer";
-import classes from './EventsForm.module.css';
+import React, { useState, useRef, useEffect } from 'react';
+import FormFooter from "../FormFooter/FormFooter";
+import classes from './FormBody.module.css';
 
 
-function EventsForm(props) {
+function FormBody(props) {
 
     //STATES & HOOKS-------------------------------------------------------------------
     const [formValidity, setFormValidity] = useState(false);
@@ -44,6 +44,7 @@ function EventsForm(props) {
         let description = descriptionRef.current.value;
         let date = dateRef.current.value;
         let eventID = "";
+        name = name.charAt(0).toUpperCase() + name.substr(1).toLowerCase();//convert to title case
 
         if (locationId === 1) { //incase of adding a new event// generate a new key
             eventID = name + Math.floor((Math.random() * 9999) + 1); //create a new id for the new event
@@ -128,7 +129,7 @@ function EventsForm(props) {
 
             </ul>
 
-            <Footer
+            <FormFooter
                 formValidity={formValidity}
                 buttonText={props.buttonText}
                 cancelButtonClickHandler={cancelButtonClickHandler}
@@ -139,4 +140,4 @@ function EventsForm(props) {
     );
 }
 
-export default EventsForm;
+export default FormBody;

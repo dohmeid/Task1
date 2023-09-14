@@ -1,11 +1,11 @@
-footer {
+.footer {
     box-sizing: border-box;
     flex: 50px 0 0;
     /*40px height, don't grow or shrink*/
     margin-top: 20px;
 }
 
-footer p {
+.text {
     padding-top: 10px;
     padding-left: 20px;
     color: #757575;

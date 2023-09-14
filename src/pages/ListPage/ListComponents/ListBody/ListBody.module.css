@@ -11,7 +11,7 @@
     height: 100%;
 }
 
-.resultsSection .header {
+.header {
     box-sizing: border-box;
     background-color: #c0c0c0;
     height: 50px;
@@ -19,13 +19,13 @@
     padding-left: 1.1em;
 }
 
-.resultsSection .header h2 {
+.text {
     font-family: Montserrat;
     font-weight: 400;
     font-size: 18px;
 }
 
-.resultsSection .content {
+.content {
     padding: 40px;
     display: grid;
     gap: 40px 20px;
@@ -36,14 +36,13 @@
     overflow: auto;
 }
 
-.resultsSection .content .card {
+.card {
     box-sizing: border-box;
-    background-color: lightgrey;
     padding-top: 5em;
     text-align: center;
 }
 
-.resultsSection .content .card:hover {
+.card:hover {
     border: 3px solid #171515;
     border-radius: 2px;
     opacity: 0.7;
