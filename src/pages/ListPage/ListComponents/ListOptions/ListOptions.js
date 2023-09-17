@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import PropTypes from 'prop-types'; // ES6
 import classes from './ListOptions.module.css';
 
 function ListOptions(props) {
@@ -6,11 +7,11 @@ function ListOptions(props) {
     //STATES & HOOKS------------------------------------------------------------------
     const name = useRef();
     const sortOption = useRef();
+    var PropTypes = require('prop-types'); // ES5 with npm
 
     //FUNCTIONS----------------------------------------------------------------
     //Search bar functionality: displays only events that match the search query
     function search() {
-        sortCards();
         let searchName = name.current.value;
         searchName = searchName.charAt(0).toUpperCase() + searchName.substr(1).toLowerCase();//convert to title case
 
@@ -25,7 +26,7 @@ function ListOptions(props) {
 
         props.setFilteredDataArray(searchResultCards);
         props.setTotalCards(searchResultCards.length);
-        props.setChange(true);
+        sortCards();
     }
 
     //Sort cards functionality: sorts the cards based on the user's  (date or name)
@@ -47,10 +48,8 @@ function ListOptions(props) {
         }
 
         props.setFilteredDataArray(filteredArray);
-        props.setTotalCards(filteredArray.length);
         props.setChange(true);
     }
-
 
 
     //JSX CODE---------------------------------------------------------------
@@ -72,6 +71,11 @@ function ListOptions(props) {
 
         </div>
     );
+}
+
+ListOptions.propTypes = {
+    filteredDataArray: PropTypes.array,
+    originalDataArray: PropTypes.array,
 }
 
 export default ListOptions;

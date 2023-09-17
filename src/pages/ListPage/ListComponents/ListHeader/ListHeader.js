@@ -3,7 +3,6 @@ import classes from './ListHeader.module.css';
 
 function ListHeader(props) {
 
-    //JSX CODE---------------------------------------------------------------
     return (
         <header className={classes.header}>
             <h1 className={classes.text}>Events</h1>

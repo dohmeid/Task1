@@ -18,12 +18,13 @@ function ListPage() {
     const [change, setChange] = useState(false);
     const navigate = useNavigate();
 
+
     useEffect(() => {
         loadEvents(); //Initially load all the events from the database
     }, []);
 
     useEffect(() => {
-        if (change === true) {
+        if (change) {
             displayCards(); //load the events from the database to the originalDataArray
             setChange(false);
         }
@@ -149,13 +150,14 @@ function ListPage() {
 
             <ListBody totalCards={totalCards}
                 color={cardsColorsArray}
-                divClickHandler={divClickHandler}
                 filteredDataArray={filteredDataArray}
+                divClickHandler={divClickHandler}
             />
 
             <ListFooter count={totalCards} />
         </div>
     );
 }
+
 
 export default ListPage;

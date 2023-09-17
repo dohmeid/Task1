@@ -1,6 +1,7 @@
 import { db, ref, set, get, child } from "../../../../services/Firebase";
 import { useNavigate } from 'react-router-dom';
 import React, { useState, useRef, useEffect } from 'react';
+import PropTypes from 'prop-types'; // ES6
 import FormFooter from "../FormFooter/FormFooter";
 import classes from './FormBody.module.css';
 
@@ -21,11 +22,15 @@ function FormBody(props) {
     const navigate = useNavigate();
     const locationId = props.pageId;
 
+    var PropTypes = require('prop-types');
+
     useEffect(() => {
         if (locationId === 2) {
             loadData();
+          //  setFormValidity(true);
         }
     }, [locationId]);
+
 
     //FUNCTIONS-----------------------------------------------------------------
     const cancelButtonClickHandler = () => {
@@ -36,7 +41,7 @@ function FormBody(props) {
                 description: "",
                 date: ""
             });
-        navigate('/'); //navigate to List Page
+        navigate('/list'); //navigate to List Page
     }
 
     const submitButtonClickHandler = () => {
@@ -68,7 +73,7 @@ function FormBody(props) {
                 date: ""
             });
 
-        navigate('/'); //navigate to List Page
+        navigate('/list'); //navigate to List Page
     }
 
     //To load the data form the database in case of editing an event
@@ -139,5 +144,10 @@ function FormBody(props) {
         </form>
     );
 }
+
+FormBody.propTypes = {
+    pageId: PropTypes.number,
+    buttonText: PropTypes.string,
+}  
 
 export default FormBody;

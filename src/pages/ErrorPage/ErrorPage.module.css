@@ -1,0 +1,53 @@
+.errorContainer {
+    height: 100vh;
+    background-image: url("ErrorPageBackground.jpg");
+    background-position: center;
+    background-size: cover;
+    padding: 10%;
+}
+
+.textContainer {
+    background: rgba(255, 250, 232, 0.6);
+    color: #C0587E;
+    padding: 30px;
+    line-height: 80px;
+    font-family: Montserrat;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.text1,
+.text2 {
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #4B1E19;
+}
+
+.text1 {
+    font-size: 100px;
+}
+
+.text2 {
+    font-size: 40px;
+}
+
+.text3 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.btn {
+    width: 200px;
+    height: 50px;
+    cursor: pointer;
+    background-color: #FC8B5E;
+    color: #4B1E19;
+    border: 3px solid #4B1E19;
+    border-radius: 10px;
+    font-weight: bolder;
+    font-family: Montserrat;
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    opacity: 0.5;
+}
