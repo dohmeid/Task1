@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'; // ES6
 import classes from './ListFooter.module.css';
 
-function ListFooter(props) {
+const ListFooter = (props) => {
     var PropTypes = require('prop-types'); // ES5 with npm
 
     return (

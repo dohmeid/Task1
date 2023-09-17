@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './ListHeader.module.css';
 
-function ListHeader(props) {
+const ListHeader = (props) => {
 
     return (
         <header className={classes.header}>

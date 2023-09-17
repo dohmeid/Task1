@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'; // ES6
 import classes from './FormHeader.module.css';
 
-function FormHeader(props) {
+const FormHeader = (props) => {
 
     var PropTypes = require('prop-types'); // ES5 with npm
 
@@ -15,6 +15,6 @@ function FormHeader(props) {
 
 FormHeader.propTypes = {
     headerText: PropTypes.string,
-}  
+}
 
 export default FormHeader;

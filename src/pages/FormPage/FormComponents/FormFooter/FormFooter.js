@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'; // ES6
 import classes from './FormFooter.module.css'
 
-function FormFooter(props) {
+const FormFooter = (props) => {
 
     var PropTypes = require('prop-types'); // ES5 with npm
 

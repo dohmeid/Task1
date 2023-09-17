@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import PropTypes from 'prop-types'; // ES6
 import classes from './ListOptions.module.css';
 
-function ListOptions(props) {
+const ListOptions = (props) => {
 
     //STATES & HOOKS------------------------------------------------------------------
     const name = useRef();
@@ -11,7 +11,7 @@ function ListOptions(props) {
 
     //FUNCTIONS----------------------------------------------------------------
     //Search bar functionality: displays only events that match the search query
-    function search() {
+    const search = () => {
         let searchName = name.current.value;
         searchName = searchName.charAt(0).toUpperCase() + searchName.substr(1).toLowerCase();//convert to title case
 
@@ -30,7 +30,7 @@ function ListOptions(props) {
     }
 
     //Sort cards functionality: sorts the cards based on the user's  (date or name)
-    function sortCards() {
+    const sortCards = () => {
         let sortOptionValue = sortOption.current.value; //date, name
         let filteredArray = props.filteredDataArray;
 

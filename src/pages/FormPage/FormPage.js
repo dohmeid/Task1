@@ -4,7 +4,7 @@ import FormHeader from "./FormComponents/FormHeader/FormHeader";
 import FormBody from "./FormComponents/FormBody/FormBody";
 import classes from './FormPage.module.css'
 
-function FormPage() {
+const FormPage = () => {
     const location = useLocation();
 
     //JSX CODE---------------------------------------------------------------

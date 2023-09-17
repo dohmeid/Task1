@@ -8,7 +8,7 @@ import ListFooter from './ListComponents/ListFooter/ListFooter';
 import classes from './ListPage.module.css';
 
 
-function ListPage() {
+const ListPage = () => {
 
     //STATES & HOOKS------------------------------------------------------------------
     const [originalDataArray, setOriginalDataArray] = useState([]); //this array contains filtered group of data from the originalArray
@@ -43,7 +43,7 @@ function ListPage() {
     }
 
     //This function loads all the cards/events and their count from the database to the page and checks for edits
-    function loadEvents() {
+    const loadEvents = () => {
         const dbRef = ref(getDatabase(app));
         get(child(dbRef, 'events/')).then((snapshot) => {
             if (snapshot.exists()) {
@@ -62,7 +62,7 @@ function ListPage() {
     }
 
     //This function is used to display the data as cards on the screen
-    function displayCards() {
+    const displayCards = () => {
         let colorsArray = [];
         //set the colors array such that, Past date:red - Current date:blue - Future date:Purple  
         for (let i = 0; i < filteredDataArray.length; i++) {
@@ -100,7 +100,7 @@ function ListPage() {
     }
 
     //This function converts firebase snapshot to array
-    function snapshotToArray(snapshot) {
+    const snapshotToArray = (snapshot) => {
         var returnArr = [];
         snapshot.forEach(function (childSnapshot) {
             var item = childSnapshot.val();
@@ -111,7 +111,7 @@ function ListPage() {
     }
 
     //This function compares one date with the current date and returns 1 if it's a future date, 0 the current date, -1 a past date
-    function compareDates(divDate2) {
+    const compareDates = (divDate2) => {
         let currDate = new Date(); //current date format : 8/19/2023
         let divDate = new Date(divDate2); //convert div date format from 2023-08-31T14:40   -  type="datetime-local" to date object format
 

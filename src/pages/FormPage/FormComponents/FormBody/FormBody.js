@@ -6,7 +6,7 @@ import FormFooter from "../FormFooter/FormFooter";
 import classes from './FormBody.module.css';
 
 
-function FormBody(props) {
+const FormBody = (props) => {
 
     //STATES & HOOKS-------------------------------------------------------------------
     const [formValidity, setFormValidity] = useState(false);
@@ -93,13 +93,13 @@ function FormBody(props) {
     }
 
     //This function is used to validate form inputs (name and date) to disable/enable the submit button
-    function validateFormInputs() {
+    const validateFormInputs = () => {
         let name_entered = nameRef.current.value;
         let date_entered = dateRef.current.value;
         let validity = (date_entered === null || date_entered === "" ||
             name_entered === null || name_entered === "" || name_entered.trim() === "" || name_entered.length < 3);
         setFormValidity(!validity);
-    };
+    }
 
 
     //JSX CODE---------------------------------------------------------------

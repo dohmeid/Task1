@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'; // ES6
 import classes from './ListBody.module.css';
 
-function ListBody(props) {
+const ListBody = (props) => {
 
     var PropTypes = require('prop-types'); // ES5 with npm
 

@@ -12,7 +12,7 @@ const router = createBrowserRouter([
   { path: '/*', element: <ErrorPage /> },
 ]);
 
-function App() {
+const App = () => {
   return <RouterProvider router={router} />;
 }
 
