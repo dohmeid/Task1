@@ -1,7 +1,7 @@
 import React from 'react';
-import classes from './ListHeader.module.css';
+import classes from './Header.module.css';
 
-const ListHeader = (props) => {
+const Header = (props) => {
 
     return (
         <header className={classes.header}>
@@ -11,4 +11,4 @@ const ListHeader = (props) => {
     );
 }
 
-export default ListHeader;
+export default Header;

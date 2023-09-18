@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types'; // ES6
-import classes from './FormHeader.module.css';
+import classes from './Header.module.css';
 
-const FormHeader = (props) => {
+const Header = (props) => {
 
     var PropTypes = require('prop-types'); // ES5 with npm
 
@@ -13,8 +13,12 @@ const FormHeader = (props) => {
     );
 }
 
-FormHeader.propTypes = {
+Header.propTypes = {
     headerText: PropTypes.string,
 }
 
-export default FormHeader;
+Header.defaultProps = {
+    headerText: 'Create event',     //by default - add new event
+}
+
+export default Header;

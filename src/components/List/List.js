@@ -1,14 +1,14 @@
 import { db, app, getDatabase, ref, set, get, child } from "../../services/Firebase";
 import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import ListHeader from './ListComponents/ListHeader/ListHeader';
-import ListOptions from './ListComponents/ListOptions/ListOptions';
-import ListBody from './ListComponents/ListBody/ListBody';
-import ListFooter from './ListComponents/ListFooter/ListFooter';
-import classes from './ListPage.module.css';
+import Header from './Header/Header';
+import Options from './Options/Options';
+import Body from './Body/Body';
+import Footer from './Footer/Footer';
+import classes from './List.module.css';
 
 
-const ListPage = () => {
+const List = () => {
 
     //STATES & HOOKS------------------------------------------------------------------
     const [originalDataArray, setOriginalDataArray] = useState([]); //this array contains filtered group of data from the originalArray
@@ -83,9 +83,8 @@ const ListPage = () => {
         var name = myArray[0].toUpperCase();
 
         for (let k = 0; k < filteredDataArray.length; k++) {
-            console.log(filteredDataArray[k].name);
             if (name === filteredDataArray[k].name.toUpperCase()) {
-                console.log("good here" + filteredDataArray[k].name);
+                console.log(filteredDataArray[k].name);
                 set(ref(db, 'eventToEdit/'),
                     {
                         id: filteredDataArray[k].id,
@@ -138,9 +137,9 @@ const ListPage = () => {
     //JSX CODE---------------------------------------------------------------
     return (
         <div className={classes.mainContainer}>
-            <ListHeader newButtonClickHandler={() => { newButtonClickHandler() }} />
+            <Header newButtonClickHandler={() => { newButtonClickHandler() }} />
 
-            <ListOptions
+            <Options
                 filteredDataArray={filteredDataArray}
                 setFilteredDataArray={setFilteredDataArray}
                 originalDataArray={originalDataArray}
@@ -148,16 +147,16 @@ const ListPage = () => {
                 setChange={setChange}
             />
 
-            <ListBody totalCards={totalCards}
+            <Body totalCards={totalCards}
                 color={cardsColorsArray}
                 filteredDataArray={filteredDataArray}
                 divClickHandler={divClickHandler}
             />
 
-            <ListFooter count={totalCards} />
+            <Footer count={totalCards} />
         </div>
     );
 }
 
 
-export default ListPage;
+export default List;

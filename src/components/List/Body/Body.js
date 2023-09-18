@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types'; // ES6
-import classes from './ListBody.module.css';
+import classes from './Body.module.css';
 
-const ListBody = (props) => {
+const Body = (props) => {
 
     var PropTypes = require('prop-types'); // ES5 with npm
 
@@ -28,10 +28,14 @@ const ListBody = (props) => {
     );
 }
 
-ListBody.propTypes = {
+Body.propTypes = {
     totalCards: PropTypes.number,
-    color: PropTypes.array,
-    filteredDataArray: PropTypes.array,
+    color: PropTypes.array.isRequired,
+    filteredDataArray: PropTypes.array.isRequired,
 }
 
-export default ListBody;
+Body.defaultProps = {
+    totalCards: 0,
+}
+
+export default Body;

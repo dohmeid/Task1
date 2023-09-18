@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types'; // ES6
-import classes from './ListFooter.module.css';
+import classes from './Footer.module.css';
 
-const ListFooter = (props) => {
+const Footer = (props) => {
     var PropTypes = require('prop-types'); // ES5 with npm
 
     return (
@@ -13,8 +13,12 @@ const ListFooter = (props) => {
     );
 }
 
-ListFooter.propTypes = {
+Footer.propTypes = {
     count: PropTypes.number,
 }
 
-export default ListFooter;
+Footer.defaultProps = {
+    count: 0,
+}
+
+export default Footer;
