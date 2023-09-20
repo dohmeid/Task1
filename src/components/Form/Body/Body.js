@@ -1,8 +1,8 @@
-import { db, ref, set, get, child } from "../../../services/Firebase";
+import { db, ref, set, get, child } from "../../../services/Firebase/Firebase";
 import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
-import React, {useEffect } from 'react';
-import PropTypes from 'prop-types'; // ES6
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Footer from "../Footer/Footer";
 import classes from './Body.module.css';
 
@@ -11,17 +11,14 @@ const Body = (props) => {
 
     //STATES & HOOKS-------------------------------------------------------------------
     const { register, handleSubmit, reset, formState: { isValid } } = useForm();
-
     const navigate = useNavigate();
-    const locationId = props.pageId;
-    var PropTypes = require('prop-types');
+    const isNew = props.isNew;
 
     useEffect(() => {
-        if (locationId === 2) {
+        if (!isNew) { //in edit mode
             loadData();
-            //  setFormValidity(true);
         }
-    }, [locationId]);
+    }, [isNew]);
 
 
     //FUNCTIONS-----------------------------------------------------------------
@@ -41,13 +38,12 @@ const Body = (props) => {
         let eventID = "";
         name = name.charAt(0).toUpperCase() + name.substr(1).toLowerCase();//convert to title case
 
-        if (locationId === 1) { //incase of adding a new event// generate a new key
+        if (isNew) { //incase of adding a new event - generate a new key
             eventID = name + Math.floor((Math.random() * 9999) + 1); //create a new id for the new event
         }
-        else if (locationId === 2) {
+        else {
             eventID = data.id;
         }
-
         set(ref(db, 'events/' + eventID),
             {
                 id: eventID,
@@ -61,7 +57,6 @@ const Body = (props) => {
                 description: "",
                 date: ""
             });
-
         navigate('/list'); //navigate to List Page
     }
 
@@ -69,7 +64,7 @@ const Body = (props) => {
     const loadData = () => {
         get(child(ref(db), 'eventToEdit/')).then((snapshot) => {
             if (snapshot.exists()) {
-                reset({...snapshot.val()})
+                reset({ ...snapshot.val() })
             } else {
                 console.log("No data available");
             }
@@ -78,7 +73,6 @@ const Body = (props) => {
         });
     }
 
-    console.log('render');
 
     //JSX CODE---------------------------------------------------------------
     return (
@@ -116,7 +110,7 @@ const Body = (props) => {
 
             <Footer
                 formValidity={isValid}
-                buttonText={props.buttonText}
+                isNew={isNew}
                 cancelButtonClickHandler={cancelButtonClickHandler}
             />
 
@@ -125,8 +119,11 @@ const Body = (props) => {
 }
 
 Body.propTypes = {
-    pageId: PropTypes.number.isRequired,
-    buttonText: PropTypes.string,
+    isNew: PropTypes.bool
+}
+
+Body.defaultProps = {
+    isNew: true,
 }
 
 export default Body;

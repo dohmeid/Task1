@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import classes from './ErrorPage.module.css';
+import classes from '../ErrorPage/ErrorPage.module.css';
 
 const ErrorPage = () => {
 

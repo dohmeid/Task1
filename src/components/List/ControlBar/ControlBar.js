@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types'; // ES6
-import classes from './Options.module.css';
+import PropTypes from 'prop-types';
+import classes from './ControlBar.module.css';
 
-const Options = (props) => {
+const ControlBar = (props) => {
 
     //STATES & HOOKS------------------------------------------------------------------
     const [sortOption, setSortOption] = useState("none");
-    var PropTypes = require('prop-types'); // ES5 with npm
+    const [isChanged, setIsChanged] = useState(false); //to re-sort the cards in the search case  
 
     useEffect(() => {
         sortCards();
-    }, [sortOption, props.filteredDataArray]);
+        setIsChanged(false);
+    }, [sortOption, isChanged]);
+
 
     //FUNCTIONS----------------------------------------------------------------
     //Search bar functionality: displays only events that match the search query
@@ -28,24 +30,25 @@ const Options = (props) => {
         }
         props.setFilteredDataArray(searchResultCards);
         props.setTotalCards(searchResultCards.length);
-        props.setChange(true);
+        setIsChanged(true);
     }
 
     //Sort cards functionality: sorts the cards based on the user's  (date or name)
     const sortCards = () => {
+        let sortedArray = [...props.filteredDataArray];
         if (sortOption === "date") { //sort by date
-            props.filteredDataArray.sort(function (a, b) {
+            sortedArray.sort(function (a, b) {
                 return new Date(b.date) - new Date(a.date); //convert date strings to date objects and then subtract them
             });
         }
         else if (sortOption === "name") { //sort by name
-            props.filteredDataArray.sort(function (a, b) {
+            sortedArray.sort(function (a, b) {
                 var textA = a.name.toUpperCase();
                 var textB = b.name.toUpperCase();
                 return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
             });
         }
-        props.setChange(true);
+        props.setFilteredDataArray(sortedArray);
     }
 
     const sortChangeHandler = (e) => {
@@ -62,8 +65,8 @@ const Options = (props) => {
 
             <div className={classes.options}>
                 <label htmlFor="sort-options" className={classes.sortOptionsLabel}>Sort by</label>
-                <select name="sort-options" className={classes.sortOptions}
-                    value={sortOption} onChange={sortChangeHandler}>
+                <select name="sort-options" className={classes.sortOptions} value={sortOption}
+                    onChange={sortChangeHandler}>
                     <option value="none" disabled hidden>Select...</option>
                     <option value="date">Date</option>
                     <option value="name">Name</option>
@@ -74,9 +77,9 @@ const Options = (props) => {
     );
 }
 
-Options.propTypes = {
+ControlBar.propTypes = {
     filteredDataArray: PropTypes.array.isRequired,
     originalDataArray: PropTypes.array.isRequired,
 }
 
-export default Options;
+export default ControlBar;

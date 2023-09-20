@@ -4,21 +4,24 @@ import classes from './Header.module.css';
 
 const Header = (props) => {
 
-    var PropTypes = require('prop-types'); // ES5 with npm
+    let headerText = "Create Event";
+    if (!props.isNew) {
+        headerText = "Edit Event";
+    }
 
     return (
         <div className={classes.headerDiv}>
-            <h1> {props.headerText} </h1>
+            <h1> {headerText} </h1>
         </div>
     );
 }
 
 Header.propTypes = {
-    headerText: PropTypes.string,
+    isNew: PropTypes.bool,
 }
 
 Header.defaultProps = {
-    headerText: 'Create event',     //by default - add new event
+    isNew: true,     //by default - add new event
 }
 
 export default Header;

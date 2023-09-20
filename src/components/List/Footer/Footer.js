@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types'; // ES6
+import PropTypes from 'prop-types'; 
 import classes from './Footer.module.css';
 
 const Footer = (props) => {
-    var PropTypes = require('prop-types'); // ES5 with npm
 
     return (
         <footer className={classes.footer}>

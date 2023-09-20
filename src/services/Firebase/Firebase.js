@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebas
 import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-database.js";
 export { getDatabase, ref, set, get, child };
 
-export var firebaseConfig = {
+export const firebaseConfig = {
     apiKey: "AIzaSyAIl6-E84DOr-9uhOZxodVy2namV9oRqlg",
     authDomain: "eventswebpage---reactapp.firebaseapp.com",
     databaseURL: "https://eventswebpage---reactapp-default-rtdb.firebaseio.com",

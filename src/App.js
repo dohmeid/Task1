@@ -10,6 +10,7 @@ const router = createBrowserRouter([
   { path: '/', element: <Navigate to="/list" replace={true} />, errorElement: <ErrorPage /> },
   { path: '/list', element: <List />, errorElement: <ErrorPage /> },
   { path: '/form', element: <Form />, errorElement: <ErrorPage /> },
+  { path: '/form/edit', element: <Form isNew={false} />, errorElement: <ErrorPage /> },
   { path: '/*', element: <ErrorPage /> },
 ]);
 
