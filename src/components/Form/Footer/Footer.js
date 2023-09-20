@@ -13,8 +13,8 @@ const Footer = (props) => {
         <footer className={classes.footerDiv}>
             <hr />
             <div className={classes.buttons}>
-                <button type="button" onClick={props.cancelButtonClickHandler}>Cancel</button>
-                <input type="submit" value={buttonText} disabled={!props.formValidity} />
+                <button type="button" id="cancel-button" onClick={props.cancelButtonClickHandler}>Cancel</button>
+                <input type="submit" id="submit-button" value={buttonText} disabled={!props.formValidity} />
             </div>
         </footer>
     );

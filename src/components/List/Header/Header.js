@@ -6,7 +6,7 @@ const Header = (props) => {
     return (
         <header className={classes.header}>
             <h1 className={classes.text}>Events</h1>
-            <button className={classes.newButton} type="button" onClick={props.newButtonClickHandler}>+New</button>
+            <button className={classes.newButton} id="new-button" type="button" onClick={props.newButtonClickHandler}>+New</button>
         </header>
     );
 }

@@ -30,5 +30,4 @@ Body.propTypes = {
     filteredDataArray: PropTypes.array.isRequired,
 }
 
-
 export default Body;
