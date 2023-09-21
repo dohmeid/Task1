@@ -1,0 +1,38 @@
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    flex: 1;
+}
+
+.eventForm {
+    box-sizing: border-box;
+    padding: 4em 8em;
+    overflow: auto;
+    flex: 1;
+    list-style-type: none;
+    font-family: Raleway;
+    display: grid;
+    gap: 50px;
+    grid-template-columns: 50em;
+}
+
+.formRow {
+    display: flex;
+}
+
+.formRow label {
+    font-size: 25px;
+    width: 8em;
+}
+
+.formRow input,
+.formRow textarea {
+    padding-left: 20px;
+    font-size: 15px;
+    width: 500px;
+}
+
+.formRow input {
+    height: 3em;
+}
