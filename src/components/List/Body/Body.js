@@ -12,12 +12,12 @@ const Body = (props) => {
             </div>
 
             <div className={classes.content}>
-                {Array(props.filteredDataArray.length).fill().map((row, i) =>
-                    <div className={classes.card} style={{ backgroundColor: props.filteredDataArray[i].color }}
-                        key={props.filteredDataArray[i].id} onClick={props.divClickHandler}>
-                        <p> {props.filteredDataArray[i].name} </p>
-                        <p> {props.filteredDataArray[i].description} </p>
-                        <p> {props.filteredDataArray[i].date} </p>
+                {props.filteredDataArray.map((item) =>
+                    <div className={classes.card} style={{ backgroundColor: item.color }}
+                        key={item.id} onClick={props.cardClickHandler}>
+                        <p> {item.name} </p>
+                        <p> {item.description} </p>
+                        <p> {item.date} </p>
                     </div>
                 )}
             </div>

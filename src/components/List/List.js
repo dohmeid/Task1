@@ -8,7 +8,6 @@ import Body from './Body/Body';
 import Footer from './Footer/Footer';
 import classes from './List.module.css';
 
-
 const List = () => {
 
     //STATES & HOOKS------------------------------------------------------------------
@@ -59,7 +58,7 @@ const List = () => {
     }
 
     //This function is used when clicking a div to edit it's event
-    const divClickHandler = (event) => {
+    const cardClickHandler = (event) => {
         let divData = event.currentTarget.textContent;
         let myArray = divData.trim().split("  ");
         let name = myArray[0].toUpperCase();
@@ -89,7 +88,7 @@ const List = () => {
 
             <Body
                 filteredDataArray={filteredDataArray}
-                divClickHandler={divClickHandler}
+                cardClickHandler={cardClickHandler}
             />
 
             <Footer count={totalCards} />

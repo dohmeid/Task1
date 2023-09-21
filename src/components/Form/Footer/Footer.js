@@ -1,13 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types'; 
+import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
 import classes from './Footer.module.css'
 
 const Footer = (props) => {
-
-    let buttonText = "Add";
-    if (!props.isNew) {
-        buttonText = "Save";
-    }
+    const buttonText = useMemo(() => props.isNew ? 'Add' : 'Save', [props.isNew]);
 
     return (
         <footer className={classes.footerDiv}>
