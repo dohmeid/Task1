@@ -1,0 +1,34 @@
+.searchbarSortlistDiv {
+    background-color: white;
+    flex: 60px 0 0;
+    /*60px height, don't grow or shrink*/
+    padding: 1em 0.7em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.searchbar {
+    box-sizing: border-box;
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    border-width: 1px;
+    font-family: Raleway;
+    padding-left: 15px;
+}
+
+.sortOptionsLabel {
+    box-sizing: border-box;
+    height: 30px;
+    padding-right: 15px;
+    font-size: 15px;
+    font-family: Raleway;
+}
+
+.sortOptions {
+    box-sizing: border-box;
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    font-family: Raleway;
+}

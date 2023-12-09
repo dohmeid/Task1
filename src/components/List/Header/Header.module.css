@@ -1,0 +1,37 @@
+.header {
+    box-sizing: border-box;
+    background-color: #171515;
+    color: white;
+    flex: 80px 0 0;
+    /*80px height, don't grow or shrink*/
+    padding: 1.3em 1.5em;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.newButton {
+    width: 100px;
+    height: 40px;
+}
+
+.text{
+    font-family: Montserrat;
+    font-weight: 200;
+    width: 100px;
+    height: 40px;
+}
+
+.newButton {
+    background-color: white;
+    font-family: Raleway;
+    text-align: center;
+    color: #171515;
+    font-size: 15px;
+}
+
+.newButton:hover {
+    border: 2px solid crimson;
+    border-radius: 2px;
+    color: crimson;
+}

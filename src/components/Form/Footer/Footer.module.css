@@ -1,0 +1,53 @@
+.footerDiv {
+    box-sizing: border-box;
+    flex: 3em 0 0;
+    padding: 0 0.5em;
+}
+
+.footerDiv .buttons {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(2, 7em);
+    grid-template-rows: 50px;
+    justify-content: flex-end;
+    padding-top: 0.5em;
+}
+
+.footerDiv .buttons input,
+.footerDiv .buttons button {
+    height: 3em;
+    width: 7em;
+    font-family: Montserrat;
+}
+
+.footerDiv .buttons input {
+    background-color: crimson;
+    border-width: 0.5px;
+    border-color: white;
+    color: white;
+}
+
+.footerDiv .buttons input:hover:not([disabled]) {
+    border-color: lightgrey;
+    font-weight: bold;
+    border-width: 4px;
+}
+
+.footerDiv .buttons button {
+    background-color: white;
+    border-width: 0.5px;
+    border-color: crimson;
+    color: crimson;
+    font-weight: bold;
+}
+
+.footerDiv .buttons button:hover {
+    font-weight: bold;
+    border-width: 4px;
+}
+
+.footerDiv .buttons input:disabled {
+    background-color: grey;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
